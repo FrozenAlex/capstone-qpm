@@ -8,7 +8,7 @@ set(ANDROID_PLATFORM 24)
 project(capstone-qpm LANGUAGES C)
 
 include(FetchContent)
-# Upstream Capstone version; independent of the QPM package version.
+# Keep the upstream release and packaged headers aligned with qpm2.json.
 FetchContent_Declare(capstone
     URL https://codeload.github.com/capstone-engine/capstone/tar.gz/refs/tags/5.0.8
     URL_HASH SHA256=467e128736227a12a2066c562cfe69a2b7c45353fab3f02a0522d9cd62ccf0f6
