@@ -10,8 +10,8 @@ project(capstone-qpm LANGUAGES C)
 include(FetchContent)
 # Keep the upstream release and packaged headers aligned with qpm2.json.
 FetchContent_Declare(capstone
-    URL https://codeload.github.com/capstone-engine/capstone/tar.gz/refs/tags/5.0.8
-    URL_HASH SHA256=467e128736227a12a2066c562cfe69a2b7c45353fab3f02a0522d9cd62ccf0f6
+    URL https://codeload.github.com/capstone-engine/capstone/tar.gz/refs/tags/5.0.9
+    URL_HASH SHA256=0619da31af08152600af95c481527ef6d756c0a8404fca7544a4fdf6dfc2c0f9
 )
 
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)

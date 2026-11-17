@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/QuestPackageManager/QPM.Package/refs/heads/main/qpm.schema.json",
   "configVersion": "2.0.0",
   "id": "capstone",
-  "version": "5.0.8",
+  "version": "5.0.9",
   "additionalData": {
     "url": "https://github.com/sc2ad/capstone-qpm"
   },
