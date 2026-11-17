@@ -8,23 +8,18 @@ set(ANDROID_PLATFORM 24)
 project(capstone-qpm LANGUAGES C)
 
 include(FetchContent)
-# This revision matches the public headers shipped by capstone 0.1.0.
-FetchContent_Populate(capstone
-    URL https://codeload.github.com/capstone-engine/capstone/tar.gz/6ac6255afabd5ce3a469a1247e239398df320d17
-    URL_HASH SHA256=038e2269810eafd0120193e896ec01acbd7ae65c34d7ab6243d8d48ab42a20f8
+# Upstream Capstone version; independent of the QPM package version.
+FetchContent_Declare(capstone
+    URL https://codeload.github.com/capstone-engine/capstone/tar.gz/refs/tags/5.0.8
+    URL_HASH SHA256=467e128736227a12a2066c562cfe69a2b7c45353fab3f02a0522d9cd62ccf0f6
 )
 
-# The upstream revision predates CMake 4; patch only the downloaded build file.
-file(READ "${capstone_SOURCE_DIR}/CMakeLists.txt" CAPSTONE_CMAKE)
-string(REPLACE "SET CMP0048 OLD" "SET CMP0048 NEW" CAPSTONE_CMAKE "${CAPSTONE_CMAKE}")
-file(WRITE "${capstone_SOURCE_DIR}/CMakeLists.txt" "${CAPSTONE_CMAKE}")
-set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
-
-set(CAPSTONE_BUILD_SHARED OFF CACHE BOOL "" FORCE)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+set(BUILD_STATIC_LIBS ON CACHE BOOL "" FORCE)
 set(CAPSTONE_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(CAPSTONE_BUILD_CSTOOL OFF CACHE BOOL "" FORCE)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-add_subdirectory("${capstone_SOURCE_DIR}" "${capstone_BINARY_DIR}")
-set_target_properties(capstone-static PROPERTIES
+FetchContent_MakeAvailable(capstone)
+set_target_properties(capstone_static PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
 )
