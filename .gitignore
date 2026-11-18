@@ -5,5 +5,9 @@ libs/
 obj/
 
 extern/
-qpm.shared.json
 *.backup
+
+/build/
+/ndkpath.txt
+/qpm.settings.json
+/*.qpkg

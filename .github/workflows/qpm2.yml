@@ -1,0 +1,31 @@
+name: QPM2 build
+
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: seanmiddleditch/gha-setup-ninja@v5
+      - uses: Fernthedev/qpm-action@v2
+        with:
+          publish: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') && 'late' || '' }}
+          publish_token: ${{ secrets.QPM_KEY }}
+      - name: Build package
+        run: qpm2 qpkg
+      - uses: actions/upload-artifact@v4
+        with:
+          name: capstone
+          path: |
+            libcapstone.a
+            capstone.qpkg
+          if-no-files-found: error

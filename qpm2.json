@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/QuestPackageManager/QPM.Package/refs/heads/main/qpm.schema.json",
+  "configVersion": "2.0.0",
+  "id": "capstone",
+  "version": "5.0.9",
+  "additionalData": {
+    "url": "https://github.com/sc2ad/capstone-qpm"
+  },
+  "workspace": {
+    "scripts": {
+      "build": [
+        "cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo",
+        "cmake --build build --parallel 4",
+        "cmake -E make_directory extern/build",
+        "cmake -E copy libcapstone.a extern/build/libcapstone.a"
+      ]
+    },
+    "outBinaries": [
+      "libcapstone.a"
+    ],
+    "ndk": "^29.0.0",
+    "toolchainOut": null,
+    "cmake": false
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "dependenciesDirectory": "extern",
+  "sharedDirectory": "shared",
+  "compileOptions": {
+    "includePaths": [
+      ""
+    ]
+  }
+}
