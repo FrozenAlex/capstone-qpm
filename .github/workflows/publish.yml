@@ -23,8 +23,3 @@ jobs:
       - name: Verify packaged static archive
         run: |
           python3 -c "from pathlib import Path; from zipfile import ZipFile; assert ZipFile('capstone.qpkg').read('bin/libcapstone.a') == Path('libcapstone.a').read_bytes()"
-      - name: Upload standalone static archive
-        uses: softprops/action-gh-release@v2
-        with:
-          files: libcapstone.a
-          fail_on_unmatched_files: true

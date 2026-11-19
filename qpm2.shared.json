@@ -20,7 +20,9 @@
         ]
       },
       "ndk": "^29.0.0",
-      "outBinary": "libcapstone.a",
+      "outBinaries": [
+        "libcapstone.a"
+      ],
       "cmake": false
     },
     "dependencies": {},

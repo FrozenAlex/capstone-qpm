@@ -15,7 +15,9 @@
         "cmake -E copy libcapstone.a extern/build/libcapstone.a"
       ]
     },
-    "outBinary": "libcapstone.a",
+    "outBinaries": [
+      "libcapstone.a"
+    ],
     "ndk": "^29.0.0",
     "toolchainOut": null,
     "cmake": false
